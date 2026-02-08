@@ -114,7 +114,18 @@ public class Principal {
     }
 
     private static void buscarAlumnoPorMatricula(Scanner scanner, OperacionesAlumnos operaciones) {
-        
+    System.out.println("-BUSQUEDA POR MATRICULA-");
+    System.out.print("Ingresa la matricula del alumno: ");
+    String matriculaCapturada = scanner.nextLine().trim();
+
+    Alumno alumnoEncontrado = operaciones.buscarPorMatricula(matriculaCapturada);
+
+    if (alumnoEncontrado != null) {
+        System.out.println("¡Alumno encontrado!");
+        System.out.println(alumnoEncontrado);
+    } else {
+        System.out.println("Error: No existe ningun alumno: " + matriculaCapturada);
+    }    
     }
 
     private static void buscarAlumnosPorLicenciatura(Scanner scanner, OperacionesAlumnos operaciones) {
