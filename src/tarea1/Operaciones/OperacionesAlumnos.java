@@ -12,9 +12,17 @@ public class OperacionesAlumnos {
         this.alumnos = new LinkedList<>(alumnosIniciales);
     }
 
-    // public Alumno buscarPorMatricula(String matricula) {
+    public Alumno buscarPorMatricula(String matricula) {
+    for (Alumno al : this.alumnos) {
         
-    // }
+        if (al.getMatricula().equals(matricula)) {
+            
+            return al; 
+        }
+    }
+    
+    return null;     
+    }
 
     // public List<Alumno> buscarPorLicenciatura(String licenciatura) {
         
