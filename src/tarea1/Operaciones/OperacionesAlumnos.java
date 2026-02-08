@@ -16,9 +16,29 @@ public class OperacionesAlumnos {
         
     // }
 
-    // public List<Alumno> buscarPorLicenciatura(String licenciatura) {
-        
-    // }
+    public List<Alumno> buscarPorLicenciatura(String licenciatura) {
+
+        String criterio = licenciatura.trim().toUpperCase();
+
+        if (criterio.isEmpty()) {
+
+            return Collections.emptyList();
+
+        }
+
+        List<Alumno> encontrados = new LinkedList<>();
+
+        for (Alumno alumno : alumnos) {
+
+            if (alumno.getLicenciatura().equalsIgnoreCase(criterio)) {
+
+                encontrados.add(alumno);
+
+            }
+        }
+
+        return encontrados;
+    }
 
     // public List<Alumno> buscarPorGenero(char genero) {
         

@@ -118,7 +118,41 @@ public class Principal {
     }
 
     private static void buscarAlumnosPorLicenciatura(Scanner scanner, OperacionesAlumnos operaciones) {
-        
+
+        System.out.print("Ingrese la licenciatura a buscar: ");
+        String licenciatura = scanner.nextLine().trim();
+
+        if (licenciatura.isEmpty()) {
+
+            System.out.println("Se requiere la clave de licenciatura para realizar la busqueda.");
+            return;
+
+        }
+
+        if (!licenciatura.equals("LIC001") && !licenciatura.equals("LIC002")) {
+
+            System.out.println("Clave de licenciatura no valida.");
+            System.out.println("La clave de licenciatura debe ser LIC001 o LIC002");
+            return;
+
+        }
+
+        List<Alumno> encontrados = operaciones.buscarPorLicenciatura(licenciatura);
+
+        if (encontrados.isEmpty()) {
+
+            System.out.println("No se encontraron alumnos para la licenciatura " + licenciatura.toUpperCase() + ".");
+            return;
+
+        }
+
+        System.out.println("Alumnos en la licenciatura " + licenciatura.toUpperCase() + ":");
+
+        for (Alumno alumno : encontrados) {
+
+            System.out.println(alumno);
+
+        }
     }
 
     private static void buscarAlumnosPorGenero(Scanner scanner, OperacionesAlumnos operaciones) {
