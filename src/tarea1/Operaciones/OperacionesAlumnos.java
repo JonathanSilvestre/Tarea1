@@ -9,7 +9,9 @@ public class OperacionesAlumnos {
     private final LinkedList<Alumno> alumnos;
 
     public OperacionesAlumnos(List<Alumno> alumnosIniciales) {
+
         this.alumnos = new LinkedList<>(alumnosIniciales);
+
     }
 
     public Alumno buscarPorMatricula(String matricula) {
@@ -24,9 +26,25 @@ public class OperacionesAlumnos {
     return null;     
     }
 
-    // public List<Alumno> buscarPorLicenciatura(String licenciatura) {
-        
-    // }
+    //Busca alumnos por licenciatura, ignorando mayusculas y espacios
+    public List<Alumno> buscarPorLicenciatura(String licenciatura) {
+
+        String criterio = licenciatura;
+
+        List<Alumno> encontrados = new LinkedList<>();
+
+        // Se recorre la lista de alumnos y se compara la licenciatura de cada alumno con el criterio
+        for (Alumno alumno : alumnos) {
+
+            if (alumno.getLicenciatura().equalsIgnoreCase(criterio)) {
+
+                encontrados.add(alumno);
+
+            }
+        }
+
+        return encontrados;
+    }
 
     public List<Alumno> buscarPorGenero(char genero) {
         List<Alumno> resultados = new ArrayList<>();

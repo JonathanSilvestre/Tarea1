@@ -128,8 +128,50 @@ public class Principal {
     }    
     }
 
+    //Busca alumnos por licenciatura, ignorando mayusculas y espacios
     private static void buscarAlumnosPorLicenciatura(Scanner scanner, OperacionesAlumnos operaciones) {
-        
+
+        // Se le solicita al usuario que ingrese la clave de licenciatura a buscar
+        System.out.print("Ingrese la licenciatura a buscar: ");
+        // Se lee la entrada del usuario y se eliminan espacios en blanco al inicio y al final
+        String licenciatura = scanner.nextLine().trim();
+
+        // Se valida que el usuario haya ingresado una clave de licenciatura
+        if (licenciatura.isEmpty()) {
+
+            System.out.println("Se requiere la clave de licenciatura para realizar la busqueda.");
+            return;
+
+        }
+
+        // Se valida que la clave de licenciatura sea una de las opciones validas (LIC001 o LIC002)
+        if (!licenciatura.equals("LIC001") && !licenciatura.equals("LIC002")) {
+
+            System.out.println("Clave de licenciatura no valida.");
+            System.out.println("La clave de licenciatura debe ser LIC001 o LIC002");
+            return;
+
+        }
+
+        // Se llama al metodo buscarPorLicenciatura de la clase OperacionesAlumnos para obtener la lista de alumnos que pertenecen a la licenciatura ingresada por el usuario
+        List<Alumno> encontrados = operaciones.buscarPorLicenciatura(licenciatura);
+
+        if (encontrados.isEmpty()) {
+
+            // Si no se encontraron alumnos para la licenciatura ingresada, se muestra un mensaje indicando que no se encontraron resultados
+            System.out.println("No se encontraron alumnos para la licenciatura " + licenciatura + ".");
+            return;
+
+        }
+
+        // Si se encontraron alumnos para la licenciatura ingresada, entonces se muestra la lista de alumnos encontrados
+        System.out.println("Alumnos en la licenciatura " + licenciatura + ":");
+
+        for (Alumno alumno : encontrados) {
+
+            System.out.println(alumno);
+
+        }
     }
 
     private static void buscarAlumnosPorGenero(Scanner scanner, OperacionesAlumnos operaciones) {
