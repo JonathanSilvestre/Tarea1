@@ -133,9 +133,27 @@ public class Principal {
     }
 
     private static void buscarAlumnosPorGenero(Scanner scanner, OperacionesAlumnos operaciones) {
-        
+        System.out.print("Ingrese el género del alumno que deseé buscar (M o F): ");
+        String entrada = scanner.next().toUpperCase();
 
+        if (entrada.lenght() > 0){
+            char genero = entrada.charAt(0);
 
+            List<Alumno> encontrados = operaciones.buscarPorGenero(genero);
+
+            if (encontrados.isEmpty()){
+                System.out.println("No se encontraron alumnos con el género escrito.");
+            }
+            else {
+                System.out.println("Alumnos encontrados");
+                for (Alumno al : encontrados){
+                    System.out.println(al.getMatricula() + " - " + al.getNombreCompleto);
+                }
+            }
+        }
+        else {
+                System.out.println("Entrada no válida.");
+            }
     }
 
     private static void borrarAlumnoPorMatricula(Scanner scanner, OperacionesAlumnos operaciones) {

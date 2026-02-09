@@ -28,9 +28,19 @@ public class OperacionesAlumnos {
         
     // }
 
-    // public List<Alumno> buscarPorGenero(char genero) {
-        
-    // }
+    public List<Alumno> buscarPorGenero(char genero) {
+        List<Alumno> resultados = new ArrayList<>();
+
+        char generoBuscado = Character.toUpperCase(genero);
+
+        for (Alumno al : this.alumnos){
+            if (Character.toUpperCase(al.getGenero()) == generoBuscado){
+                resultados.add(al);
+            }
+        }
+
+        return resultados;
+    }
 
     // public boolean eliminarPorMatricula(String matricula) {
         
