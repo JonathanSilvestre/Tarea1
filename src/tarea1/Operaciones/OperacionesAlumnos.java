@@ -32,9 +32,21 @@ public class OperacionesAlumnos {
         
     // }
 
-    // public boolean eliminarPorMatricula(String matricula) {
-        
-    // }
+    public boolean eliminarPorMatricula(String matricula) {
+
+    Iterator<Alumno> it = alumnos.iterator();
+
+    while (it.hasNext()) {
+        Alumno al = it.next();
+
+        if (al.getMatricula().equals(matricula)) {
+            it.remove(); // elimina de la LinkedList
+            return true;
+        }
+    }
+
+    return false; // no se encontró
+    }
 
     public boolean estaVacia() {
         return alumnos.isEmpty();

@@ -139,8 +139,20 @@ public class Principal {
     }
 
     private static void borrarAlumnoPorMatricula(Scanner scanner, OperacionesAlumnos operaciones) {
-        
+
+    System.out.println("-BORRAR ALUMNO POR MATRICULA-");
+    System.out.print("Ingresa la matricula del alumno: ");
+    String matricula = scanner.nextLine().trim();
+
+    boolean eliminado = operaciones.eliminarPorMatricula(matricula);
+
+    if (eliminado) {
+        System.out.println("Alumno eliminado correctamente.");
+    } else {
+        System.out.println("No se encontró ningún alumno con esa matrícula.");
     }
+    }
+
 
     private static List<Alumno> cargarAlumnosDesdeArchivo(Path rutaArchivo) throws IOException {
 
