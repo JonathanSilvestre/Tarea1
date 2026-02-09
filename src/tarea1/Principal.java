@@ -113,6 +113,7 @@ public class Principal {
 
     }
 
+    // Busca un alumno por su matrícula y muestra su información si se encuentra, o un mensaje de error si no se encuentra
     private static void buscarAlumnoPorMatricula(Scanner scanner, OperacionesAlumnos operaciones) {
     System.out.println("-BUSQUEDA POR MATRICULA-");
     System.out.print("Ingresa la matricula del alumno: ");
@@ -174,30 +175,34 @@ public class Principal {
         }
     }
 
+    //Busca alumnos por genero, ignorando mayusculas
     private static void buscarAlumnosPorGenero(Scanner scanner, OperacionesAlumnos operaciones) {
-        System.out.print("Ingrese el género del alumno que deseé buscar (M o F): ");
+        System.out.print("Ingrese el genero del alumno que desea buscar (M o F): ");
         String entrada = scanner.next().toUpperCase();
 
-        if (entrada.lenght() > 0){
+        // Se valida que el usuario haya ingresado un genero
+        if (entrada.length() > 0){
             char genero = entrada.charAt(0);
 
             List<Alumno> encontrados = operaciones.buscarPorGenero(genero);
 
+            // Si no se encontraron alumnos para el genero ingresado, se muestra un mensaje indicando que no se encontraron resultados
             if (encontrados.isEmpty()){
-                System.out.println("No se encontraron alumnos con el género escrito.");
+                System.out.println("No se encontraron alumnos con el genero escrito.");
             }
             else {
                 System.out.println("Alumnos encontrados");
                 for (Alumno al : encontrados){
-                    System.out.println(al.getMatricula() + " - " + al.getNombreCompleto);
+                    System.out.println(al.getMatricula() + " - " + al.getNombreCompleto());
                 }
             }
         }
         else {
-                System.out.println("Entrada no válida.");
+                System.out.println("Entrada no valida.");
             }
     }
 
+    // Elimina un alumno por su matrícula, muestra un mensaje indicando si se eliminó correctamente o si no se encontró ningún alumno con esa matrícula
     private static void borrarAlumnoPorMatricula(Scanner scanner, OperacionesAlumnos operaciones) {
 
     System.out.println("-BORRAR ALUMNO POR MATRICULA-");
@@ -209,7 +214,7 @@ public class Principal {
     if (eliminado) {
         System.out.println("Alumno eliminado correctamente.");
     } else {
-        System.out.println("No se encontró ningún alumno con esa matrícula.");
+        System.out.println("No se encontro ningún alumno con esa matricula.");
     }
     }
 

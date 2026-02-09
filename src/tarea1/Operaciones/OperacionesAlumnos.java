@@ -14,6 +14,7 @@ public class OperacionesAlumnos {
 
     }
 
+    // Busca un alumno por su matrícula y devuelve el objeto Alumno si se encuentra, o null si no se encuentra
     public Alumno buscarPorMatricula(String matricula) {
     for (Alumno al : this.alumnos) {
         
@@ -26,7 +27,7 @@ public class OperacionesAlumnos {
     return null;     
     }
 
-    //Busca alumnos por licenciatura, ignorando mayusculas y espacios
+    //Busca alumnos por licenciatura
     public List<Alumno> buscarPorLicenciatura(String licenciatura) {
 
         String criterio = licenciatura;
@@ -46,6 +47,7 @@ public class OperacionesAlumnos {
         return encontrados;
     }
 
+    //Busca alumnos por genero, ignorando mayusculas
     public List<Alumno> buscarPorGenero(char genero) {
         List<Alumno> resultados = new ArrayList<>();
 
@@ -60,13 +62,16 @@ public class OperacionesAlumnos {
         return resultados;
     }
 
+    // Elimina un alumno por su matrícula, devuelve true si se eliminó correctamente o false si no se encontró ningún alumno con esa matrícula
     public boolean eliminarPorMatricula(String matricula) {
 
     Iterator<Alumno> it = alumnos.iterator();
-
+    
+    // Se recorre la lista de alumnos utilizando un iterador para poder eliminar elementos de la lista mientras se itera
     while (it.hasNext()) {
         Alumno al = it.next();
 
+        // Si se encuentra un alumno con la matrícula especificada, se elimina de la lista y se devuelve true
         if (al.getMatricula().equals(matricula)) {
             it.remove(); // elimina de la LinkedList
             return true;
