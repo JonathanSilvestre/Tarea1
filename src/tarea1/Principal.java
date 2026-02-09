@@ -235,7 +235,7 @@ public class Principal {
 
             while ((linea = reader.readLine()) != null) {
 
-                if (linea.isBlank()) {
+                if (linea.isEmpty()) {
 
                     continue;
 
